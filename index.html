@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title>PhotoGallery</title>
+  <title>Πρόγραμμα</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <meta http-equiv="X-UA-Compatible" content="ie=edg">
@@ -26,6 +26,7 @@
   #title{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;font-size:40px;margin-bottom:0.8em;font-weight:bold;}
   #save{position:absolute;top:50px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.2em 0.6em;}
   #save:hover{background:#404040;}
+  #close_list{position:fixed;top:25px;right:30px;font-size:30px;cursor:pointer;}
   </style>
   <script>
    
@@ -125,6 +126,7 @@
    <div class="lesson_box"><a href="">Γαλλικά</a></div>
    <div class="lesson_box"><a href="">Εικαστικά</a></div>
    <div class="lesson_box"><a href="">Λογοτεχνία</a></div>
+   <div id="close_list">X</div>
   </div>
  
  <script> 
@@ -134,6 +136,7 @@
  var box=document.getElementsByClassName("box");
  var lesson_box=document.getElementsByClassName("lesson_box");
  var lessons_box=document.getElementById("lessons_box");
+ var close_list=document.getElementById("close_list");
  var editBtn1 = document.getElementById("save");
  var schedule = document.getElementById("schedule");
 
@@ -182,6 +185,7 @@
    }
    });
 }*/
+close_list.addEventListener("click",function(){if(lessons_box.style.display=="block"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="block";}});
  
  
 
@@ -211,6 +215,7 @@
      var les=parent.querySelector('.lesson').innerHTML="+";
     });
   }
+  close_list.addEventListener("click",function(){if(lessons_box.style.display=="block"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="block";}});
  }
  editBtn1.addEventListener('click', function(e){localStorage.setItem("schedule", schedule.innerHTML);alert("Το πρόγραμμα αποθηκεύτηκε")});
 //setInterval(function(){localStorage.setItem(schedule, schedule.innerHTML);}, 5000);
