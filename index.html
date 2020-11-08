@@ -21,17 +21,18 @@
   .lesson{width:85%;height:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
   #lessons_box{width:90%;background:#202020;position:fixed;top:17%;margin:0 auto;padding:0.5em;display:none;}
   .lesson_box{width:22.8%;background:#303030;display:inline-block;margin:0.6em 1%;text-align:center;padding:0.6em 0.2em;cursor:pointer;}
+  .lesson_box:hover{background:#404040;}
   .lesson_box a{pointer-events:none;}
   #title{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;font-size:40px;margin-bottom:0.8em;font-weight:bold;}
-  #save{position:absolute;top:50px;right:50px;cursor:pointer;display:block;}
-  #save_ico{width:30px;}
+  #save{position:absolute;top:50px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.2em 0.6em;}
+  #save:hover{background:#404040;}
   </style>
   <script>
    
   </script>
  </head>
  <body>
-  <div id="save"><img id="save_ico" src="https://www.iconsdb.com/icons/preview/white/save-as-xxl.png"></div>
+  <div id="save">Αποθήκευση</div>
   <div id="schedule">
    <div id="title">Πρόγραμμα</div>
    <div class="hours">
