@@ -11,29 +11,33 @@
   a{color:white;text-decoration:none;}
   body{display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;background:#101010;color:#FFFFFF;position:relative;font-family:'Manrope', sans-serif;}
   #schedule{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:flex-start;margin:1.2em 0;padding:1em 0.6em;}
-  .day{background:#202020;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:26%;margin:0.5%;padding:0.7em 0;cursor:pointer;}
+  .day{background:#202020;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:26.9%;margin:0.4%;padding:0.7em 0;cursor:pointer;}
   .day_n{font-size:24px;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;padding:0.2em 0 0.4em 0;font-weight:bold;}
   .day_n1{font-size:24px;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;padding:0.2em 0 0.4em 0;color:#202020;}
-  .hours{background:#202020;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:18%;margin:0.5%;padding:0.7em 0;}
+  .hours{background:#202020;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:16%;margin:0.4%;padding:0.7em 0;}
   .box{background:#303030;width:95%;height:30px;margin:0.2em;outline:none;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
   .time{background:#303030;width:90%;height:30px;margin:0.2em;outline:none;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
-  .remove_lesson{background:#404040;width:15%;height:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;cursor:pointer;}
-  .lesson{width:85%;height:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
-  #lessons_box{width:90%;background:#202020;position:fixed;top:17%;margin:0 auto;padding:0.5em;display:none;}
-  .lesson_box{width:22.8%;background:#303030;display:inline-block;margin:0.6em 1%;text-align:center;padding:0.6em 0.2em;cursor:pointer;}
+  .remove_lesson{background:#404040;width:10%;height:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;cursor:pointer;margin-left:1%;}
+  .change_lesson{background:#404040;width:10%;height:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;cursor:pointer;}
+  .remove_lesson:hover,.change_lesson:hover{background:#505050;}
+  .lesson{width:79%;height:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
+  .lesson a:hover{color:#C4B634;}
+  #lessons_box{width:90%;background:#202020;position:fixed;top:17%;margin:0 auto;padding:0.5em;display:none;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:flex-start;}
+  .lesson_box{width:23.4%;background:#303030;display:inline-block;margin:0.6em 0.8%;text-align:center;padding:0.6em 0.2em;cursor:pointer;}
   .lesson_box:hover{background:#404040;}
   .lesson_box a{pointer-events:none;}
-  #title{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;font-size:40px;margin-bottom:0.8em;font-weight:bold;}
-  #save{position:absolute;top:50px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.2em 0.6em;}
+  #title{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;font-size:40px;margin-bottom:0.8em;font-weight:bold;}  #save{position:absolute;top:40px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.8em;border-radius:50%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
   #save:hover{background:#404040;}
   #close_list{position:fixed;top:25px;right:30px;font-size:30px;cursor:pointer;}
+  .save_img{width:28px;margin:0 !important;}
+  .icon{width:14px;}
   </style>
   <script>
    
   </script>
  </head>
  <body>
-  <div id="save">Αποθήκευση</div>
+  <div id="save"><img class="save_img" src="img/save.png"></div>
   <div id="schedule">
    <div id="title">Πρόγραμμα</div>
    <div class="hours">
@@ -119,19 +123,20 @@
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/csachpel">Αρχαία</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou">Μουσική</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou">Οικιακή Οικονομία</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou">Γεωφραφία</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou">Γεωγραφία</a></div>
    <div class="lesson_box"><a href="https://meetingsemea28.webex.com/meet/pr1634893982">Θρησκευτικά</a></div>
-   <div class="lesson_box"><a href="">Ιστορία</a></div>
-   <div class="lesson_box"><a href="">Αγγλικά</a></div>
-   <div class="lesson_box"><a href="">Γαλλικά</a></div>
-   <div class="lesson_box"><a href="">Εικαστικά</a></div>
-   <div class="lesson_box"><a href="">Λογοτεχνία</a></div>
-   <div id="close_list">X</div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/annmicha">Ιστορία</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/askordou">Αγγλικά</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/alouver">Γαλλικά</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/evapost">Εικαστικά</a></div>
+   <div class="lesson_box"><a href="">Τεχνολογία</a></div>
+   <div id="close_list"><img class="save_img" src="img/remove.png"></div>
   </div>
  
  <script> 
  
  
+ /*Create Lessons And Add New Lesson*/
  
  var box=document.getElementsByClassName("box");
  var lesson_box=document.getElementsByClassName("lesson_box");
@@ -140,86 +145,118 @@
  var editBtn1 = document.getElementById("save");
  var schedule = document.getElementById("schedule");
 
- for (var i=0; i<box.length; i++){
+ for(var i=0; i<box.length; i++){
   var lesson=document.createElement("div");
   lesson.setAttribute("class","lesson");
-  lesson.innerHTML="+";
+  lesson.innerHTML="<img class='icon' src='img/add.png'>";
   box[i].appendChild(lesson);
+  var change_lesson=document.createElement("div");
+  change_lesson.setAttribute("class","change_lesson");
+  change_lesson.innerHTML="<img class='icon' src='img/edit.png'>";
+  box[i].appendChild(change_lesson);
   var remove_lesson=document.createElement("div");
   remove_lesson.setAttribute("class","remove_lesson");
-  remove_lesson.innerHTML="-";
+  remove_lesson.innerHTML="<img class='icon' src='img/remove.png'>";
   box[i].appendChild(remove_lesson);
  }
 
- for (var i=0; i<box.length; i++){
+ for(var i=0; i<box.length; i++){
   box[i].querySelector('.lesson').addEventListener("click",function(){
-   var current_lesson=document.getElementById("active_lesson");
-   current_lesson.removeAttribute("id","active_lesson");
-   this.setAttribute("id","active_lesson");
-   if (this.childNodes.length <=1){
-    lessons_box.style.display="block"; 
-    schedule.style.display="none"; 
-    save.style.display="none"; 
-    for (var i = 0; i < lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="block";});}
+   if(this.innerHTML=='<img class="icon" src="img/add.png">'){
+    var current_lesson=document.getElementById("active_lesson");
+    current_lesson.removeAttribute("id","active_lesson");
+    this.setAttribute("id","active_lesson");
+    if(this.childNodes.length<=2){
+     lessons_box.style.display="flex"; 
+     schedule.style.display="none"; 
+     save.style.display="none"; 
+     for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";});}
+    }
    }
   });
  }
  
- for (var i=0; i<box.length; i++){
+ for(var i=0; i<box.length; i++){
    box[i].querySelector('.remove_lesson').addEventListener("click",function(){
-    var parent= this.closest(".box");
-    var les=parent.querySelector('.lesson').innerHTML="+";
+    var parent=this.closest(".box");
+    var les=parent.querySelector('.lesson').innerHTML='<img class="icon" src="img/add.png">';
    });
  }
-
-/*for (var i=0; i<box.length; i++){
- box[i].querySelector('.remove_lesson').addEventListener("click",function(){
- var parent= this.closest(".box");
- var les=parent.querySelector('.lesson');
- var current_lesson=document.getElementById("active_lesson");
- current_lesson.removeAttribute("id","active_lesson");
- les.setAttribute("id","active_lesson");
- if (les.childNodes.length <=1){
-   lessons_bg.style.display="block"; 
-   for (var i = 0; i < lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;});}
+ 
+ for(var i=0; i<box.length; i++){
+  box[i].querySelector('.change_lesson').addEventListener("click",function(){
+   var parent= this.closest(".box");
+   var les=parent.querySelector('.lesson');
+   if(les.innerHTML!='<img class="icon" src="img/add.png">'){
+    var current_lesson=document.getElementById("active_lesson");
+    current_lesson.removeAttribute("id","active_lesson");
+    les.setAttribute("id","active_lesson");
+    if(les.childNodes.length<=1){
+     lessons_box.style.display="flex"; 
+     schedule.style.display="none"; 
+     save.style.display="none"; 
+     for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=les.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";});}
+    }
    }
-   });
-}*/
-close_list.addEventListener("click",function(){if(lessons_box.style.display=="block"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="block";}});
+  });
+ }
+ 
+ close_list.addEventListener("click",function(){if(lessons_box.style.display=="flex"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";}});
  
  
-
+ /*Save Schedule On Localstorage*/ 
+ 
  if (localStorage.getItem("schedule")!==null){
-  schedule.innerHTML = localStorage.getItem("schedule");
+  schedule.innerHTML=localStorage.getItem("schedule");
   var box=document.getElementsByClassName("box");
   var lesson_box=document.getElementsByClassName("lesson_box");
   var lessons_box=document.getElementById("lessons_box");
 
-  for (var i=0; i<box.length; i++){
+  for(var i=0; i<box.length; i++){
    box[i].querySelector('.lesson').addEventListener("click",function(){
-    var current_lesson=document.getElementById("active_lesson");
-    current_lesson.removeAttribute("id","active_lesson");
-    this.setAttribute("id","active_lesson");
-    if(this.childNodes.length <=1){
-     lessons_box.style.display="block"; 
-	 schedule.style.display="none"; 
-	 save.style.display="none"; 
-     for (var i = 0; i < lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="block";});}
-    }
+	if(this.innerHTML=='<img class="icon" src="img/add.png">'){
+	 var current_lesson=document.getElementById("active_lesson");
+     current_lesson.removeAttribute("id","active_lesson");
+     this.setAttribute("id","active_lesson");
+     if(this.childNodes.length<=2){
+      lessons_box.style.display="flex"; 
+	  schedule.style.display="none"; 
+	  save.style.display="none"; 
+      for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";});}
+     }
+	}
    });
   }
  
-  for (var i=0; i<box.length; i++){
+  for(var i=0; i<box.length; i++){
     box[i].querySelector('.remove_lesson').addEventListener("click",function(){
      var parent= this.closest(".box");
-     var les=parent.querySelector('.lesson').innerHTML="+";
+     var les=parent.querySelector('.lesson').innerHTML='<img class="icon" src="img/add.png">';
     });
   }
-  close_list.addEventListener("click",function(){if(lessons_box.style.display=="block"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="block";}});
+  
+  for(var i=0; i<box.length; i++){
+   box[i].querySelector('.change_lesson').addEventListener("click",function(){
+    var parent= this.closest(".box");
+    var les=parent.querySelector('.lesson');
+	if(les.innerHTML!='<img class="icon" src="img/add.png">'){
+     var current_lesson=document.getElementById("active_lesson");
+     current_lesson.removeAttribute("id","active_lesson");
+     les.setAttribute("id","active_lesson");
+     if(les.childNodes.length<=1){
+      lessons_box.style.display="flex"; 
+      schedule.style.display="none"; 
+      save.style.display="none"; 
+      for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=les.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";});}
+     }
+    }
+   });
  }
+  
+  close_list.addEventListener("click",function(){if(lessons_box.style.display=="flex"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";}});
+ }
+ 
  editBtn1.addEventListener('click', function(e){localStorage.setItem("schedule", schedule.innerHTML);alert("Το πρόγραμμα αποθηκεύτηκε")});
-//setInterval(function(){localStorage.setItem(schedule, schedule.innerHTML);}, 5000);
-
 
 
  </script>
