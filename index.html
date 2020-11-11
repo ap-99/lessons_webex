@@ -9,12 +9,14 @@
   <style>
   *{margin:0;padding:0;box-sizing:border-box;}
   a{color:white;text-decoration:none;}
-  body{display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;background:#101010;color:#FFFFFF;position:relative;font-family:'Manrope', sans-serif;}
+  body{display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;background:#101010;color:#FFFFFF;font-family:'Manrope', sans-serif;position:relative;}
   #schedule{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:flex-start;margin:1.2em 0;padding:1em 0.6em;}
+  #tasks{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:flex-start;margin:1.2em 0;padding:1em 0.6em;position:relative;}
   .day{background:#202020;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:26.9%;margin:0.4%;padding:0.7em 0;cursor:pointer;}
   .day_n{font-size:24px;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;padding:0.2em 0 0.4em 0;font-weight:bold;}
-  .day_n1{font-size:24px;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;padding:0.2em 0 0.4em 0;color:#202020;}
+  .day_n1{font-size:24px;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;padding:0.2em 0 0.4em 0;color:#202020;width:100%;}
   .hours{background:#202020;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:16%;margin:0.4%;padding:0.7em 0;}
+  .hours2, .hours3, .hours5{display:none;}
   .box{background:#303030;width:95%;height:30px;margin:0.2em;outline:none;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
   .time{background:#303030;width:90%;height:30px;margin:0.2em;outline:none;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
   .remove_lesson{background:#404040;width:10%;height:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;cursor:pointer;margin-left:1%;}
@@ -26,22 +28,65 @@
   .lesson_box{width:23.4%;background:#303030;display:inline-block;margin:0.6em 0.8%;text-align:center;padding:0.6em 0.2em;cursor:pointer;}
   .lesson_box:hover{background:#404040;}
   .lesson_box a{pointer-events:none;}
-  #title{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;font-size:40px;margin-bottom:0.8em;font-weight:bold;}  #save{position:absolute;top:40px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.8em;border-radius:50%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
+  #title{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;font-size:40px;margin-bottom:0.8em;font-weight:bold;}  
+  #save{position:absolute;top:40px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.8em;border-radius:50%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
+  #save2{position:absolute;top:20px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.8em;border-radius:50%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
   #save:hover{background:#404040;}
   #close_list{position:fixed;top:25px;right:30px;font-size:30px;cursor:pointer;}
   .save_img{width:28px;margin:0 !important;}
-  .icon{width:14px;}
+  .icon{width:14px;} 
+  #less_tasks{display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:100%;}
+  .less_task{width:49%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;margin:0.5%;background:#202020;}
+  .less_name{width:25%;margin:1.5%;}
+  .less_cont{width:71%;margin:0.5%;resize:none;font-family:'Manrope', sans-serif;color:white;border:none;outline:none;padding:5px;background:#303030;}
+  
+  @media only screen and (max-width:980px){
+  .remove_lesson{width:13%;}
+  .change_lesson{width:13%;}
+  .lesson{width:73%;}
+  }
+  @media only screen and (max-width:950px){
+  .remove_lesson{width:10%;}
+  .change_lesson{width:10%;}
+  .lesson{width:79%;}
+  .hours4{display:none;}
+  .hours3, .hours5{display:flex;}
+  .day{width:39.8%;}
+  .hours{width:18%;}
+  }
+  @media only screen and (max-width:880px){
+  .less_name{width:27%;}
+  .less_cont{width:69%;}
+  }
+  @media only screen and (max-width:780px){
+  .less_name{width:29%;}
+  .less_cont{width:67%;}
+  }
+  @media only screen and (max-width:725px){
+  .less_task{width:99%;}
+  }
+  @media only screen and (max-width:650px){
+  .hours2, .hours4{display:flex;}
+  .day{width:68.7%;}
+  .day_n1{width:100%;}
+  .hours{width:29.6%;}
+  }
+  @media only screen and (max-width:500px){
+  #save{top:45px;right:20px;}
+  #save2{top:25px;right:20px;}
+  .save_img{width:16px;margin:0 !important;}
+  }
   </style>
   <script>
    
   </script>
  </head>
- <body>
+ <body> 
   <div id="save"><img class="save_img" src="img/save.png"></div>
   <div id="schedule">
    <div id="title">Πρόγραμμα</div>
-   <div class="hours">
-    <div class="day_n1">Δευτέρα</div>
+   <div class="hours hours1">
+    <div class="day_n1">-</div>
 	<div class="time">08:30-09:10</div>
     <div class="time">09:20-10:00</div>
     <div class="time">10:10-10:50</div>
@@ -60,6 +105,16 @@
     <div class="box"></div>
     <div class="box"></div>
    </div>
+   <div class="hours hours2">
+    <div class="day_n1">-</div>
+	<div class="time">08:30-09:10</div>
+    <div class="time">09:20-10:00</div>
+    <div class="time">10:10-10:50</div>
+    <div class="time">11:00-11:40</div>
+    <div class="time">11:50-12:30</div>
+    <div class="time">12:40-13:20</div>
+    <div class="time">13:30-14:10</div>
+   </div>
    <div class="day">
     <div class="day_n">Τρίτη</div>
 	<div class="box"></div>
@@ -69,6 +124,16 @@
     <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
+   </div>
+   <div class="hours hours3">
+    <div class="day_n1">-</div>
+	<div class="time">08:30-09:10</div>
+    <div class="time">09:20-10:00</div>
+    <div class="time">10:10-10:50</div>
+    <div class="time">11:00-11:40</div>
+    <div class="time">11:50-12:30</div>
+    <div class="time">12:40-13:20</div>
+    <div class="time">13:30-14:10</div>
    </div>
    <div class="day">
     <div class="day_n">Τετάρτη</div>
@@ -80,8 +145,8 @@
     <div class="box"></div>
     <div class="box"></div>
    </div>
-   <div class="hours">
-    <div class="day_n1">Δευτέρα</div>
+   <div class="hours hours4">
+    <div class="day_n1">-</div>
 	<div class="time">08:30-09:10</div>
     <div class="time">09:20-10:00</div>
     <div class="time">10:10-10:50</div>
@@ -100,6 +165,16 @@
     <div class="box"></div>
     <div class="box"></div>
    </div>
+   <div class="hours hours5">
+    <div class="day_n1">-</div>
+	<div class="time">08:30-09:10</div>
+    <div class="time">09:20-10:00</div>
+    <div class="time">10:10-10:50</div>
+    <div class="time">11:00-11:40</div>
+    <div class="time">11:50-12:30</div>
+    <div class="time">12:40-13:20</div>
+    <div class="time">13:30-14:10</div>
+   </div>
    <div class="day">
     <div class="day_n">Παρασκευή</div>
 	<div class="box"></div>
@@ -111,30 +186,55 @@
     <div class="box"></div>
    </div>
   </div>
+  
+  <div id="tasks">
+   <div id="save2"><img class="save_img" src="img/save.png"></div>
+   <div id="title">Μαθήματα</div>
+   <div id="less_tasks">
+    <div class="less_task"><div class="less_name">Αγγλικά</div><textarea class="less_cont" id="cont1"></textarea></div>
+    <div class="less_task"><div class="less_name">Αρχαία</div><textarea class="less_cont" id="cont2"></textarea></div>
+    <div class="less_task"><div class="less_name">Βιολογία</div><textarea class="less_cont" id="cont3"></textarea></div>
+    <div class="less_task"><div class="less_name">Γαλλικά</div><textarea class="less_cont" id="cont4"></textarea></div>
+    <div class="less_task"><div class="less_name">Γεωγραφία</div><textarea class="less_cont" id="cont5"></textarea></div>
+    <div class="less_task"><div class="less_name">Γλώσσα</div><textarea class="less_cont" id="cont6"></textarea></div>
+    <div class="less_task"><div class="less_name">Γυμναστική</div><textarea class="less_cont" id="cont7"></textarea></div>
+    <div class="less_task"><div class="less_name">Εικαστικά</div><textarea class="less_cont" id="cont8"></textarea></div>
+    <div class="less_task"><div class="less_name">Θρησκευτικά</div><textarea class="less_cont" id="cont9"></textarea></div>
+    <div class="less_task"><div class="less_name">Ιστορία</div><textarea class="less_cont" id="cont10"></textarea></div>
+    <div class="less_task"><div class="less_name">Λογοτεχνία</div><textarea class="less_cont" id="cont11"></textarea></div>
+    <div class="less_task"><div class="less_name">Μαθηματικά</div><textarea class="less_cont" id="cont12"></textarea></div>
+    <div class="less_task"><div class="less_name">Μουσική</div><textarea class="less_cont" id="cont13"></textarea></div>
+    <div class="less_task"><div class="less_name">Οδύσσεια</div><textarea class="less_cont" id="cont14"></textarea></div>
+    <div class="less_task"><div class="less_name">Οικιακή Οικονομία</div><textarea class="less_cont" id="cont15"></textarea></div>
+    <div class="less_task"><div class="less_name">Πληροφορική</div><textarea class="less_cont" id="cont16"></textarea></div>
+    <div class="less_task"><div class="less_name">Τεχνολογία</div><textarea class="less_cont" id="cont17"></textarea></div>
+    <div class="less_task"><div class="less_name">Φυσική</div><textarea class="less_cont" id="cont18"></textarea></div>
+   </div>
+  </div>
+  
   <div id="lessons_box">
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/askordou" target="_blank">Αγγλικά</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/csachpel" target="_blank">Αρχαία</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/okefali" target="_blank">Βιολογία</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/alouver" target="_blank">Γαλλικά</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou" target="_blank">Γεωγραφία</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/csachpel" target="_blank">Γλώσσα</a></div>
    <div class="lesson_box" id="active"><a href="https://minedu-secondary.webex.com/meet/fgritso">Γυμναστική</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/atkarage">Πληροφορική</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/nkafkalas">Μαθηματικά</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/okefali">Βιολογία</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/okefali">Φυσική</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/lpapage">Οδύσσεια</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/csachpel">Γλώσσα</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/csachpel">Λογοτεχνία</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/csachpel">Αρχαία</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou">Μουσική</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou">Οικιακή Οικονομία</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou">Γεωγραφία</a></div>
-   <div class="lesson_box"><a href="https://meetingsemea28.webex.com/meet/pr1634893982">Θρησκευτικά</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/annmicha">Ιστορία</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/askordou">Αγγλικά</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/alouver">Γαλλικά</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/evapost">Εικαστικά</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/evapost" target="_blank">Εικαστικά</a></div>
+   <div class="lesson_box"><a href="https://meetingsemea28.webex.com/meet/pr1634893982" target="_blank">Θρησκευτικά</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/annmicha" target="_blank">Ιστορία</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/csachpel" target="_blank">Λογοτεχνία</a></div>  
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/nkafkalas" target="_blank">Μαθηματικά</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou" target="_blank">Μουσική</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/lpapage" target="_blank">Οδύσσεια</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou" target="_blank">Οικιακή Οικονομία</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/atkarage" target="_blank">Πληροφορική</a></div>
    <div class="lesson_box"><a href="">Τεχνολογία</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/okefali" target="_blank">Φυσική</a></div>
    <div id="close_list"><img class="save_img" src="img/remove.png"></div>
   </div>
  
  <script> 
- 
  
  /*Create Lessons And Add New Lesson*/
  
@@ -142,8 +242,10 @@
  var lesson_box=document.getElementsByClassName("lesson_box");
  var lessons_box=document.getElementById("lessons_box");
  var close_list=document.getElementById("close_list");
- var editBtn1 = document.getElementById("save");
- var schedule = document.getElementById("schedule");
+ var editBtn1=document.getElementById("save");
+ var editBtn2=document.getElementById("save2");
+ var schedule=document.getElementById("schedule");
+ var tasks=document.getElementById("tasks");
 
  for(var i=0; i<box.length; i++){
   var lesson=document.createElement("div");
@@ -170,7 +272,9 @@
      lessons_box.style.display="flex"; 
      schedule.style.display="none"; 
      save.style.display="none"; 
-     for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";});}
+	 tasks.style.display="none"; 
+     save2.style.display="none"; 
+     for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";});}
     }
    }
   });
@@ -195,18 +299,20 @@
      lessons_box.style.display="flex"; 
      schedule.style.display="none"; 
      save.style.display="none"; 
-     for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=les.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";});}
+	 tasks.style.display="none"; 
+     save2.style.display="none"; 
+     for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=les.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";});}
     }
    }
   });
  }
  
- close_list.addEventListener("click",function(){if(lessons_box.style.display=="flex"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";}});
+ close_list.addEventListener("click",function(){if(lessons_box.style.display=="flex"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";}});
  
  
  /*Save Schedule On Localstorage*/ 
  
- if (localStorage.getItem("schedule")!==null){
+ if(localStorage.getItem("schedule")!==null){
   schedule.innerHTML=localStorage.getItem("schedule");
   var box=document.getElementsByClassName("box");
   var lesson_box=document.getElementsByClassName("lesson_box");
@@ -221,8 +327,10 @@
      if(this.childNodes.length<=2){
       lessons_box.style.display="flex"; 
 	  schedule.style.display="none"; 
-	  save.style.display="none"; 
-      for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";});}
+	  save.style.display="none";
+      tasks.style.display="none"; 
+      save2.style.display="none"; 	  
+      for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";});}
      }
 	}
    });
@@ -247,16 +355,60 @@
       lessons_box.style.display="flex"; 
       schedule.style.display="none"; 
       save.style.display="none"; 
-      for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=les.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";});}
+	  tasks.style.display="none"; 
+      save2.style.display="none"; 
+      for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=les.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";});}
      }
     }
    });
  }
   
-  close_list.addEventListener("click",function(){if(lessons_box.style.display=="flex"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";}});
+  close_list.addEventListener("click",function(){if(lessons_box.style.display=="flex"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";}});
  }
  
- editBtn1.addEventListener('click', function(e){localStorage.setItem("schedule", schedule.innerHTML);alert("Το πρόγραμμα αποθηκεύτηκε")});
+ if(localStorage["cont1"]){var cont1=localStorage["cont1"];document.getElementById("cont1").value=cont1;}
+ if(localStorage["cont2"]){var cont2=localStorage["cont2"];document.getElementById("cont2").value=cont2;}
+ if(localStorage["cont3"]){var cont3=localStorage["cont3"];document.getElementById("cont3").value=cont3;}
+ if(localStorage["cont4"]){var cont4=localStorage["cont4"];document.getElementById("cont4").value=cont4;}
+ if(localStorage["cont5"]){var cont5=localStorage["cont5"];document.getElementById("cont5").value=cont5;}
+ if(localStorage["cont6"]){var cont6=localStorage["cont6"];document.getElementById("cont6").value=cont6;}
+ if(localStorage["cont7"]){var cont7=localStorage["cont7"];document.getElementById("cont7").value=cont7;}
+ if(localStorage["cont8"]){var cont8=localStorage["cont8"];document.getElementById("cont8").value=cont8;}
+ if(localStorage["cont9"]){var cont9=localStorage["cont9"];document.getElementById("cont9").value=cont9;}
+ if(localStorage["cont10"]){var cont10=localStorage["cont10"];document.getElementById("cont10").value=cont10;}
+ if(localStorage["cont11"]){var cont11=localStorage["cont11"];document.getElementById("cont11").value=cont11;}
+ if(localStorage["cont12"]){var cont12=localStorage["cont12"];document.getElementById("cont12").value=cont12;}
+ if(localStorage["cont13"]){var cont13=localStorage["cont13"];document.getElementById("cont13").value=cont13;}
+ if(localStorage["cont14"]){var cont14=localStorage["cont14"];document.getElementById("cont14").value=cont14;}
+ if(localStorage["cont15"]){var cont15=localStorage["cont15"];document.getElementById("cont15").value=cont15;}
+ if(localStorage["cont16"]){var cont16=localStorage["cont16"];document.getElementById("cont16").value=cont16;}
+ if(localStorage["cont17"]){var cont17=localStorage["cont17"];document.getElementById("cont17").value=cont17;}
+ if(localStorage["cont18"]){var cont18=localStorage["cont18"];document.getElementById("cont18").value=cont18;}
+ 
+ editBtn1.addEventListener('click', function(e){localStorage.setItem("schedule", schedule.innerHTML);alert("Το πρόγραμμα αποθηκεύτηκε");});
+ editBtn2.addEventListener('click', function(e){localStorage.setItem("tasks", tasks.innerHTML);console.log(tasks.innerHTML);});
+ editBtn2.addEventListener("click", function(e)
+ {
+  var cont1=document.getElementById("cont1").value;if(cont1!=''){localStorage.setItem("cont1", cont1);};
+  var cont2=document.getElementById("cont2").value;if(cont2!=''){localStorage.setItem("cont2", cont2);};
+  var cont3=document.getElementById("cont3").value;if(cont3!=''){localStorage.setItem("cont3", cont3);};
+  var cont4=document.getElementById("cont4").value;if(cont4!=''){localStorage.setItem("cont4", cont4);};
+  var cont5=document.getElementById("cont5").value;if(cont5!=''){localStorage.setItem("cont5", cont5);};
+  var cont6=document.getElementById("cont6").value;if(cont6!=''){localStorage.setItem("cont6", cont6);};
+  var cont7=document.getElementById("cont7").value;if(cont7!=''){localStorage.setItem("cont7", cont7);};
+  var cont8=document.getElementById("cont8").value;if(cont8!=''){localStorage.setItem("cont8", cont8);};
+  var cont9=document.getElementById("cont9").value;if(cont9!=''){localStorage.setItem("cont9", cont9);};
+  var cont10=document.getElementById("cont10").value;if(cont10!=''){localStorage.setItem("cont10", cont10)};
+  var cont11=document.getElementById("cont11").value;if(cont11!=''){localStorage.setItem("cont11", cont11)};
+  var cont12=document.getElementById("cont12").value;if(cont12!=''){localStorage.setItem("cont12", cont12)};
+  var cont13=document.getElementById("cont13").value;if(cont13!=''){localStorage.setItem("cont13", cont13)};
+  var cont14=document.getElementById("cont14").value;if(cont14!=''){localStorage.setItem("cont14", cont14)};
+  var cont15=document.getElementById("cont15").value;if(cont15!=''){localStorage.setItem("cont15", cont15)};
+  var cont16=document.getElementById("cont16").value;if(cont16!=''){localStorage.setItem("cont16", cont16)};
+  var cont17=document.getElementById("cont17").value;if(cont17!=''){localStorage.setItem("cont17", cont17)};
+  var cont18=document.getElementById("cont18").value;if(cont18!=''){localStorage.setItem("cont18", cont18)};
+  alert("Τα μαθήματα αποθηκεύτηκαν");
+ });
 
 
  </script>
