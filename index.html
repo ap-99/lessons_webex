@@ -9,13 +9,14 @@
   <style>
   *{margin:0;padding:0;box-sizing:border-box;}
   a{color:white;text-decoration:none;}
-  body{display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;background:#101010;color:#FFFFFF;font-family:'Manrope', sans-serif;position:relative;}
+  body{display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;background:#101010;color:#FFFFFF;font-family:'Manrope', sans-serif;position:relative;white-space:nowrap}
   #schedule{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:flex-start;margin:1.2em 0;padding:1em 0.6em;}
   #tasks{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:flex-start;margin:1.2em 0;padding:1em 0.6em;position:relative;}
-  .day{background:#202020;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:26.9%;margin:0.4%;padding:0.7em 0;cursor:pointer;}
+  #mails{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:flex-start;margin:1.2em 0;padding:1em 0.6em;position:relative;}
+  .day{background:#202020;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:26.9%;margin:0.4%;padding:0.4em 0;cursor:pointer;}
   .day_n{font-size:24px;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;padding:0.2em 0 0.4em 0;font-weight:bold;}
   .day_n1{font-size:24px;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;padding:0.2em 0 0.4em 0;color:#202020;width:100%;}
-  .hours{background:#202020;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:16%;margin:0.4%;padding:0.7em 0;}
+  .hours{background:#202020;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:16%;margin:0.4%;padding:0.4em 0;}
   .hours2, .hours3, .hours5{display:none;}
   .box{background:#303030;width:95%;height:30px;margin:0.2em;outline:none;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
   .time{background:#303030;width:90%;height:30px;margin:0.2em;outline:none;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
@@ -31,14 +32,18 @@
   #title{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;font-size:40px;margin-bottom:0.8em;font-weight:bold;}  
   #save{position:absolute;top:40px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.8em;border-radius:50%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
   #save2{position:absolute;top:20px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.8em;border-radius:50%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
-  #save:hover{background:#404040;}
+  #save3{position:absolute;top:20px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.8em;border-radius:50%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
+  #save:hover, #save2:hover, #save3:hover{background:#404040;}
   #close_list{position:fixed;top:25px;right:30px;font-size:30px;cursor:pointer;}
   .save_img{width:28px;margin:0 !important;}
   .icon{width:14px;} 
-  #less_tasks{display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:100%;}
-  .less_task{width:49%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;margin:0.5%;background:#202020;}
-  .less_name{width:25%;margin:1.5%;}
-  .less_cont{width:71%;margin:0.5%;resize:none;font-family:'Manrope', sans-serif;color:white;border:none;outline:none;padding:5px;background:#303030;}
+  #less_tasks, #mail_boxes{display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:flex-start;width:100%;}
+  .less_task, .mail_box{width:49%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;margin:0.3%;background:#202020;padding:2px;}
+  .less_name, .mail_name{width:25%;margin:1.5%;overflow:hidden;}
+  .less_cont, .mail_cont{width:71%;margin:0.5%;resize:none;font-family:'Manrope', sans-serif;color:white;border:none;outline:none;padding:5px;background:#303030;height:47px;}
+  .mail_cont{width:62%;height:30px;}
+  .mail_link{width:8%;background:#404040;margin:0 0.5%;height:30px;pointer-events:none;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
+  .mail_link:hover{background:#505050;}
   
   @media only screen and (max-width:980px){
   .remove_lesson{width:13%;}
@@ -55,26 +60,48 @@
   .hours{width:18%;}
   }
   @media only screen and (max-width:880px){
-  .less_name{width:27%;}
-  .less_cont{width:69%;}
+  .less_name, .mail_name{width:27%;}
+  .less_cont, .mail_cont{width:69%;}
+  .mail_cont{width:60%;}
+  .mail_link{width:8%;margin:0 0.5%;}
   }
   @media only screen and (max-width:780px){
-  .less_name{width:29%;}
-  .less_cont{width:67%;}
+  .less_name, .mail_name{width:29%;}
+  .less_cont, .mail_cont{width:67%;}
+  .mail_cont{width:58%;}
+  .mail_link{width:8%;margin:0 0.5%;}
   }
   @media only screen and (max-width:725px){
-  .less_task{width:99%;}
+  .less_task, .mail_box{width:99%;}
+  }
+  @media only screen and (max-width:698px){
+  .lesson_box{width:31.7%;}
   }
   @media only screen and (max-width:650px){
   .hours2, .hours4{display:flex;}
   .day{width:68.7%;}
   .day_n1{width:100%;}
   .hours{width:29.6%;}
+  #save, #save2, #save3{right:30px;}
+  }
+  @media only screen and (max-width:520px){
+  .lesson_box{width:48.4%;}
   }
   @media only screen and (max-width:500px){
-  #save{top:45px;right:20px;}
-  #save2{top:25px;right:20px;}
+  #save{top:35px;right:20px;}
+  #save2{top:15px;right:20px;}
+  #save3{top:15px;right:20px;}
   .save_img{width:16px;margin:0 !important;}
+  .day_n, .day_n1{font-size:20px;}
+  #title{font-size:30px;}
+  body{font-size:14px;}
+  }
+  @media only screen and (max-width:332px){
+  .day{width:65.7%;}
+  .hours{width:31.6%;}
+  .day, .hours{font-size:13px;}
+  .day_n, .day_n1{font-size:17px;}
+  #title{font-size:26px;}
   }
   </style>
   <script>
@@ -212,14 +239,35 @@
    </div>
   </div>
   
+  <div id="mails">
+   <div id="save3"><img class="save_img" src="img/save.png"></div>
+   <div id="title">E-Mails</div>
+   <div id="mail_boxes">
+    <div class="mail_box"><div class="mail_name">Σκόρδου</div><textarea class="mail_cont" id="mail1"></textarea><a class="mail_link" id="mail1_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Σαχπελίδου</div><textarea class="mail_cont" id="mail2"></textarea><a class="mail_link" id="mail2_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Κεφαλή</div><textarea class="mail_cont" id="mail3"></textarea><a class="mail_link" id="mail3_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Λουβερδή</div><textarea class="mail_cont" id="mail4"></textarea><a class="mail_link" id="mail4_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Φούντου</div><textarea class="mail_cont" id="mail5"></textarea><a class="mail_link" id="mail5_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Γριτσοπούλου</div><textarea class="mail_cont" id="mail6"></textarea><a class="mail_link" id="mail6_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Αποστολάτου</div><textarea class="mail_cont" id="mail7"></textarea><a class="mail_link" id="mail7_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Χατζηαποστόλου</div><textarea class="mail_cont" id="mail8"></textarea><a class="mail_link" id="mail8_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Μιχαλέρη</div><textarea class="mail_cont" id="mail9"></textarea><a class="mail_link" id="mail9_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Καφκαλάς</div><textarea class="mail_cont" id="mail10"></textarea><a class="mail_link" id="mail10_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Παπαγεωργίου</div><textarea class="mail_cont" id="mail11"></textarea><a class="mail_link" id="mail11_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Παπαγεωργίου (2)</div><textarea class="mail_cont" id="mail11b"></textarea><a class="mail_link" id="mail11b_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Καραγεώργη</div><textarea class="mail_cont" id="mail12"></textarea><a class="mail_link" id="mail12_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Ρίζου</div><textarea class="mail_cont" id="mail13"></textarea><a class="mail_link" id="mail13_link" href=""><img class="icon" src="img/send.png"></a></div>
+   </div>
+  </div>
+  
   <div id="lessons_box">
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/askordou" target="_blank">Αγγλικά</a></div>
+   <div class="lesson_box" id="active"><a href="https://minedu-secondary.webex.com/meet/askordou" target="_blank">Αγγλικά</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/csachpel" target="_blank">Αρχαία</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/okefali" target="_blank">Βιολογία</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/alouver" target="_blank">Γαλλικά</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou" target="_blank">Γεωγραφία</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/csachpel" target="_blank">Γλώσσα</a></div>
-   <div class="lesson_box" id="active"><a href="https://minedu-secondary.webex.com/meet/fgritso">Γυμναστική</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/fgritso">Γυμναστική</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/evapost" target="_blank">Εικαστικά</a></div>
    <div class="lesson_box"><a href="https://meetingsemea28.webex.com/meet/pr1634893982" target="_blank">Θρησκευτικά</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/annmicha" target="_blank">Ιστορία</a></div>
@@ -244,8 +292,11 @@
  var close_list=document.getElementById("close_list");
  var editBtn1=document.getElementById("save");
  var editBtn2=document.getElementById("save2");
+ var editBtn3=document.getElementById("save3");
  var schedule=document.getElementById("schedule");
  var tasks=document.getElementById("tasks");
+ var mails=document.getElementById("mails");
+ var mail_link=document.getElementsByClassName("mail_link");
 
  for(var i=0; i<box.length; i++){
   var lesson=document.createElement("div");
@@ -273,8 +324,10 @@
      schedule.style.display="none"; 
      save.style.display="none"; 
 	 tasks.style.display="none"; 
-     save2.style.display="none"; 
-     for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";});}
+     save2.style.display="none";
+	 mails.style.display="none"; 
+     save3.style.display="none"; 
+     for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";mails.style.display="flex";save3.style.display="flex";});}
     }
    }
   });
@@ -300,14 +353,21 @@
      schedule.style.display="none"; 
      save.style.display="none"; 
 	 tasks.style.display="none"; 
-     save2.style.display="none"; 
-     for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=les.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";});}
+     save2.style.display="none";
+	 mails.style.display="none"; 
+     save3.style.display="none"; 
+     for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=les.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";mails.style.display="flex";save3.style.display="flex";});}
     }
    }
   });
  }
  
- close_list.addEventListener("click",function(){if(lessons_box.style.display=="flex"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";}});
+ for(var i=0; i<mail_link; i++){
+  console.log(mail_link[i].href);
+  if(mail_link[i].href==""){this.style.pointerEvents="none";}
+ }
+ 
+ close_list.addEventListener("click",function(){if(lessons_box.style.display=="flex"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";mails.style.display="flex";save3.style.display="flex";}});
  
  
  /*Save Schedule On Localstorage*/ 
@@ -329,8 +389,10 @@
 	  schedule.style.display="none"; 
 	  save.style.display="none";
       tasks.style.display="none"; 
-      save2.style.display="none"; 	  
-      for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";});}
+      save2.style.display="none";
+	  mails.style.display="none"; 
+      save3.style.display="none"; 
+      for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";mails.style.display="flex";save3.style.display="flex";});}
      }
 	}
    });
@@ -357,13 +419,15 @@
       save.style.display="none"; 
 	  tasks.style.display="none"; 
       save2.style.display="none"; 
-      for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=les.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";});}
+	  mails.style.display="none"; 
+      save3.style.display="none";  
+      for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=les.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";mails.style.display="flex";save3.style.display="flex";});}
      }
     }
    });
  }
   
-  close_list.addEventListener("click",function(){if(lessons_box.style.display=="flex"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";}});
+  close_list.addEventListener("click",function(){if(lessons_box.style.display=="flex"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";mails.style.display="flex";save3.style.display="flex";}});
  }
  
  if(localStorage["cont1"]){var cont1=localStorage["cont1"];document.getElementById("cont1").value=cont1;}
@@ -385,8 +449,22 @@
  if(localStorage["cont17"]){var cont17=localStorage["cont17"];document.getElementById("cont17").value=cont17;}
  if(localStorage["cont18"]){var cont18=localStorage["cont18"];document.getElementById("cont18").value=cont18;}
  
+ if(localStorage["mail1"]){var mail1=localStorage["mail1"];document.getElementById("mail1").value=mail1;document.getElementById("mail1_link").href="mailto:"+mail1;document.getElementById("mail1_link").style.pointerEvents="auto";}
+ if(localStorage["mail2"]){var mail2=localStorage["mail2"];document.getElementById("mail2").value=mail2;document.getElementById("mail2_link").href="mailto:"+mail2;document.getElementById("mail2_link").style.pointerEvents="auto";}
+ if(localStorage["mail3"]){var mail3=localStorage["mail3"];document.getElementById("mail3").value=mail3;document.getElementById("mail3_link").href="mailto:"+mail3;document.getElementById("mail3_link").style.pointerEvents="auto";}
+ if(localStorage["mail4"]){var mail4=localStorage["mail4"];document.getElementById("mail4").value=mail4;document.getElementById("mail4_link").href="mailto:"+mail4;document.getElementById("mail4_link").style.pointerEvents="auto";}
+ if(localStorage["mail5"]){var mail5=localStorage["mail5"];document.getElementById("mail5").value=mail5;document.getElementById("mail5_link").href="mailto:"+mail5;document.getElementById("mail5_link").style.pointerEvents="auto";}
+ if(localStorage["mail6"]){var mail6=localStorage["mail6"];document.getElementById("mail6").value=mail6;document.getElementById("mail6_link").href="mailto:"+mail6;document.getElementById("mail6_link").style.pointerEvents="auto";}
+ if(localStorage["mail7"]){var mail7=localStorage["mail7"];document.getElementById("mail7").value=mail7;document.getElementById("mail7_link").href="mailto:"+mail7;document.getElementById("mail7_link").style.pointerEvents="auto";}
+ if(localStorage["mail8"]){var mail8=localStorage["mail8"];document.getElementById("mail8").value=mail8;document.getElementById("mail8_link").href="mailto:"+mail8;document.getElementById("mail8_link").style.pointerEvents="auto";}
+ if(localStorage["mail9"]){var mail9=localStorage["mail9"];document.getElementById("mail9").value=mail9;document.getElementById("mail9_link").href="mailto:"+mail9;document.getElementById("mail9_link").style.pointerEvents="auto";}
+ if(localStorage["mail10"]){var mail10=localStorage["mail10"];document.getElementById("mail10").value=mail10;document.getElementById("mail10_link").href="mailto:"+mail10;document.getElementById("mail10_link").style.pointerEvents="auto";}
+ if(localStorage["mail11"]){var mail11=localStorage["mail11"];document.getElementById("mail11").value=mail11;document.getElementById("mail11_link").href="mailto:"+mail11;document.getElementById("mail11_link").style.pointerEvents="auto";}
+ if(localStorage["mail11b"]){var mail11=localStorage["mail11b"];document.getElementById("mail11b").value=mail11;document.getElementById("mail11b_link").href="mailto:"+mail11b;document.getElementById("mail11b_link").style.pointerEvents="auto";}
+ if(localStorage["mail12"]){var mail12=localStorage["mail12"];document.getElementById("mail12").value=mail12;document.getElementById("mail12_link").href="mailto:"+mail12;document.getElementById("mail12_link").style.pointerEvents="auto";}
+ if(localStorage["mail13"]){var mail13=localStorage["mail13"];document.getElementById("mail13").value=mail13;document.getElementById("mail13_link").href="mailto:"+mail13;document.getElementById("mail13_link").style.pointerEvents="auto";}
+ 
  editBtn1.addEventListener('click', function(e){localStorage.setItem("schedule", schedule.innerHTML);alert("Το πρόγραμμα αποθηκεύτηκε");});
- editBtn2.addEventListener('click', function(e){localStorage.setItem("tasks", tasks.innerHTML);console.log(tasks.innerHTML);});
  editBtn2.addEventListener("click", function(e)
  {
   var cont1=document.getElementById("cont1").value;if(cont1!=''){localStorage.setItem("cont1", cont1);};
@@ -408,6 +486,25 @@
   var cont17=document.getElementById("cont17").value;if(cont17!=''){localStorage.setItem("cont17", cont17)};
   var cont18=document.getElementById("cont18").value;if(cont18!=''){localStorage.setItem("cont18", cont18)};
   alert("Τα μαθήματα αποθηκεύτηκαν");
+ });
+ 
+ editBtn3.addEventListener("click", function(e)
+ {
+  var mail1=document.getElementById("mail1").value;if(mail1!=''){localStorage.setItem("mail1", mail1);};
+  var mail2=document.getElementById("mail2").value;if(mail2!=''){localStorage.setItem("mail2", mail2);};
+  var mail3=document.getElementById("mail3").value;if(mail3!=''){localStorage.setItem("mail3", mail3);};
+  var mail4=document.getElementById("mail4").value;if(mail4!=''){localStorage.setItem("mail4", mail4);};
+  var mail5=document.getElementById("mail5").value;if(mail5!=''){localStorage.setItem("mail5", mail5);};
+  var mail6=document.getElementById("mail6").value;if(mail6!=''){localStorage.setItem("mail6", mail6);};
+  var mail7=document.getElementById("mail7").value;if(mail7!=''){localStorage.setItem("mail7", mail7);};
+  var mail8=document.getElementById("mail8").value;if(mail8!=''){localStorage.setItem("mail8", mail8);};
+  var mail9=document.getElementById("mail9").value;if(mail9!=''){localStorage.setItem("mail9", mail9);};
+  var mail10=document.getElementById("mail10").value;if(mail10!=''){localStorage.setItem("mail10", mail10)};
+  var mail11=document.getElementById("mail11").value;if(mail11!=''){localStorage.setItem("mail11", mail11)};
+  var mail11b=document.getElementById("mail11b").value;if(mail11b!=''){localStorage.setItem("mail11b", mail11b)};
+  var mail12=document.getElementById("mail12").value;if(mail12!=''){localStorage.setItem("mail12", mail12)};
+  var mail13=document.getElementById("mail13").value;if(mail13!=''){localStorage.setItem("mail13", mail13)};
+  alert("Τα e-mails αποθηκεύτηκαν");
  });
 
 
