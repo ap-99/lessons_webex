@@ -6,110 +6,11 @@
   <meta name="viewport" content="width=device-width">
   <meta http-equiv="X-UA-Compatible" content="ie=edg">
   <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
-  <style>
-  *{margin:0;padding:0;box-sizing:border-box;}
-  a{color:white;text-decoration:none;}
-  body{display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;background:#101010;color:#FFFFFF;font-family:'Manrope', sans-serif;position:relative;white-space:nowrap}
-  #schedule{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:flex-start;margin:1.2em 0;padding:1em 0.6em;}
-  #tasks{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:flex-start;margin:1.2em 0;padding:1em 0.6em;position:relative;}
-  #mails{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:flex-start;margin:1.2em 0;padding:1em 0.6em;position:relative;}
-  .day{background:#202020;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:26.9%;margin:0.4%;padding:0.4em 0;cursor:pointer;}
-  .day_n{font-size:24px;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;padding:0.2em 0 0.4em 0;font-weight:bold;}
-  .day_n1{font-size:24px;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;padding:0.2em 0 0.4em 0;color:#202020;width:100%;}
-  .hours{background:#202020;display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:center;width:16%;margin:0.4%;padding:0.4em 0;}
-  .hours2, .hours3, .hours5{display:none;}
-  .box{background:#303030;width:95%;height:30px;margin:0.2em;outline:none;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
-  .time{background:#303030;width:90%;height:30px;margin:0.2em;outline:none;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
-  .remove_lesson{background:#404040;width:10%;height:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;cursor:pointer;margin-left:1%;}
-  .change_lesson{background:#404040;width:10%;height:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;cursor:pointer;}
-  .remove_lesson:hover,.change_lesson:hover{background:#505050;}
-  .lesson{width:79%;height:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
-  .lesson a:hover{color:#C4B634;}
-  #lessons_box{width:90%;background:#202020;position:fixed;top:17%;margin:0 auto;padding:0.5em;display:none;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:flex-start;}
-  .lesson_box{width:23.4%;background:#303030;display:inline-block;margin:0.6em 0.8%;text-align:center;padding:0.6em 0.2em;cursor:pointer;}
-  .lesson_box:hover{background:#404040;}
-  .lesson_box a{pointer-events:none;}
-  #title{width:100%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;font-size:40px;margin-bottom:0.8em;font-weight:bold;}  
-  #save{position:absolute;top:40px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.8em;border-radius:50%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
-  #save2{position:absolute;top:20px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.8em;border-radius:50%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
-  #save3{position:absolute;top:20px;right:50px;cursor:pointer;display:block;background:#303030;padding:0.8em;border-radius:50%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
-  #save:hover, #save2:hover, #save3:hover{background:#404040;}
-  #close_list{position:fixed;top:25px;right:30px;font-size:30px;cursor:pointer;}
-  .save_img{width:28px;margin:0 !important;}
-  .icon{width:14px;} 
-  #less_tasks, #mail_boxes{display:flex;flex-flow:column;flex-flow:wrap;align-items:center;justify-content:flex-start;width:100%;}
-  .less_task, .mail_box{width:49%;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;margin:0.3%;background:#202020;padding:2px;}
-  .less_name, .mail_name{width:25%;margin:1.5%;overflow:hidden;}
-  .less_cont, .mail_cont{width:71%;margin:0.5%;resize:none;font-family:'Manrope', sans-serif;color:white;border:none;outline:none;padding:5px;background:#303030;height:47px;}
-  .mail_cont{width:62%;height:30px;}
-  .mail_link{width:8%;background:#404040;margin:0 0.5%;height:30px;pointer-events:none;display:flex;flex-flow:row;flex-flow:wrap;align-items:center;justify-content:center;}
-  .mail_link:hover{background:#505050;}
-  
-  @media only screen and (max-width:980px){
-  .remove_lesson{width:13%;}
-  .change_lesson{width:13%;}
-  .lesson{width:73%;}
-  }
-  @media only screen and (max-width:950px){
-  .remove_lesson{width:10%;}
-  .change_lesson{width:10%;}
-  .lesson{width:79%;}
-  .hours4{display:none;}
-  .hours3, .hours5{display:flex;}
-  .day{width:39.8%;}
-  .hours{width:18%;}
-  }
-  @media only screen and (max-width:880px){
-  .less_name, .mail_name{width:27%;}
-  .less_cont, .mail_cont{width:69%;}
-  .mail_cont{width:60%;}
-  .mail_link{width:8%;margin:0 0.5%;}
-  }
-  @media only screen and (max-width:780px){
-  .less_name, .mail_name{width:29%;}
-  .less_cont, .mail_cont{width:67%;}
-  .mail_cont{width:58%;}
-  .mail_link{width:8%;margin:0 0.5%;}
-  }
-  @media only screen and (max-width:725px){
-  .less_task, .mail_box{width:99%;}
-  }
-  @media only screen and (max-width:698px){
-  .lesson_box{width:31.7%;}
-  }
-  @media only screen and (max-width:650px){
-  .hours2, .hours4{display:flex;}
-  .day{width:68.7%;}
-  .day_n1{width:100%;}
-  .hours{width:29.6%;}
-  #save, #save2, #save3{right:30px;}
-  }
-  @media only screen and (max-width:520px){
-  .lesson_box{width:48.4%;}
-  }
-  @media only screen and (max-width:500px){
-  #save{top:35px;right:20px;}
-  #save2{top:15px;right:20px;}
-  #save3{top:15px;right:20px;}
-  .save_img{width:16px;margin:0 !important;}
-  .day_n, .day_n1{font-size:20px;}
-  #title{font-size:30px;}
-  body{font-size:14px;}
-  }
-  @media only screen and (max-width:332px){
-  .day{width:65.7%;}
-  .hours{width:31.6%;}
-  .day, .hours{font-size:13px;}
-  .day_n, .day_n1{font-size:17px;}
-  #title{font-size:26px;}
-  }
-  </style>
-  <script>
-   
-  </script>
+  <link rel="stylesheet" href="assets/styles.css">
  </head>
  <body> 
-  <div id="save"><img class="save_img" src="img/save.png"></div>
+  
+  <div id="save"><img class="save_img" src="assets/ico_save.png"></div>
   <div id="schedule">
    <div id="title">Πρόγραμμα</div>
    <div class="hours hours1">
@@ -215,49 +116,49 @@
   </div>
   
   <div id="tasks">
-   <div id="save2"><img class="save_img" src="img/save.png"></div>
+   <div id="save2"><img class="save_img" src="assets/ico_save.png"></div>
    <div id="title">Μαθήματα</div>
    <div id="less_tasks">
-    <div class="less_task"><div class="less_name">Αγγλικά</div><textarea class="less_cont" id="cont1">-</textarea></div>
-    <div class="less_task"><div class="less_name">Αρχαία</div><textarea class="less_cont" id="cont2">-</textarea></div>
-    <div class="less_task"><div class="less_name">Βιολογία</div><textarea class="less_cont" id="cont3">-</textarea></div>
-    <div class="less_task"><div class="less_name">Γαλλικά</div><textarea class="less_cont" id="cont4">-</textarea></div>
-    <div class="less_task"><div class="less_name">Γεωγραφία</div><textarea class="less_cont" id="cont5">-</textarea></div>
-    <div class="less_task"><div class="less_name">Γλώσσα</div><textarea class="less_cont" id="cont6">-</textarea></div>
-    <div class="less_task"><div class="less_name">Γυμναστική</div><textarea class="less_cont" id="cont7">-</textarea></div>
-    <div class="less_task"><div class="less_name">Εικαστικά</div><textarea class="less_cont" id="cont8">-</textarea></div>
-    <div class="less_task"><div class="less_name">Θρησκευτικά</div><textarea class="less_cont" id="cont9">-</textarea></div>
-    <div class="less_task"><div class="less_name">Ιστορία</div><textarea class="less_cont" id="cont10">-</textarea></div>
-    <div class="less_task"><div class="less_name">Λογοτεχνία</div><textarea class="less_cont" id="cont11">-</textarea></div>
-    <div class="less_task"><div class="less_name">Μαθηματικά</div><textarea class="less_cont" id="cont12">-</textarea></div>
-    <div class="less_task"><div class="less_name">Μουσική</div><textarea class="less_cont" id="cont13">-</textarea></div>
-    <div class="less_task"><div class="less_name">Οδύσσεια</div><textarea class="less_cont" id="cont14">-</textarea></div>
-    <div class="less_task"><div class="less_name">Οικιακή Οικονομία</div><textarea class="less_cont" id="cont15">-</textarea></div>
-    <div class="less_task"><div class="less_name">Πληροφορική</div><textarea class="less_cont" id="cont16">-</textarea></div>
-    <div class="less_task"><div class="less_name">Τεχνολογία</div><textarea class="less_cont" id="cont17">-</textarea></div>
-    <div class="less_task"><div class="less_name">Φυσική</div><textarea class="less_cont" id="cont18">-</textarea></div>
+    <div class="less_task"><div class="less_name">Αγγλικά</div><textarea class="less_cont" id="cont1"></textarea></div>
+    <div class="less_task"><div class="less_name">Αρχαία</div><textarea class="less_cont" id="cont2"></textarea></div>
+    <div class="less_task"><div class="less_name">Βιολογία</div><textarea class="less_cont" id="cont3"></textarea></div>
+    <div class="less_task"><div class="less_name">Γαλλικά</div><textarea class="less_cont" id="cont4"></textarea></div>
+    <div class="less_task"><div class="less_name">Γεωγραφία</div><textarea class="less_cont" id="cont5"></textarea></div>
+    <div class="less_task"><div class="less_name">Γλώσσα</div><textarea class="less_cont" id="cont6"></textarea></div>
+    <div class="less_task"><div class="less_name">Γυμναστική</div><textarea class="less_cont" id="cont7"></textarea></div>
+    <div class="less_task"><div class="less_name">Εικαστικά</div><textarea class="less_cont" id="cont8"></textarea></div>
+    <div class="less_task"><div class="less_name">Θρησκευτικά</div><textarea class="less_cont" id="cont9"></textarea></div>
+    <div class="less_task"><div class="less_name">Ιστορία</div><textarea class="less_cont" id="cont10"></textarea></div>
+    <div class="less_task"><div class="less_name">Λογοτεχνία</div><textarea class="less_cont" id="cont11"></textarea></div>
+    <div class="less_task"><div class="less_name">Μαθηματικά</div><textarea class="less_cont" id="cont12"></textarea></div>
+    <div class="less_task"><div class="less_name">Μουσική</div><textarea class="less_cont" id="cont13"></textarea></div>
+    <div class="less_task"><div class="less_name">Οδύσσεια</div><textarea class="less_cont" id="cont14"></textarea></div>
+    <div class="less_task"><div class="less_name">Οικιακή Οικονομία</div><textarea class="less_cont" id="cont15"></textarea></div>
+    <div class="less_task"><div class="less_name">Πληροφορική</div><textarea class="less_cont" id="cont16"></textarea></div>
+    <div class="less_task"><div class="less_name">Τεχνολογία</div><textarea class="less_cont" id="cont17"></textarea></div>
+    <div class="less_task"><div class="less_name">Φυσική</div><textarea class="less_cont" id="cont18"></textarea></div>
    </div>
   </div>
   
   <div id="mails">
-   <div id="save3"><img class="save_img" src="img/save.png"></div>
+   <div id="save3"><img class="save_img" src="assets/ico_save.png"></div>
    <div id="title">E-Mails</div>
    <div id="mail_boxes">
-    <div class="mail_box"><div class="mail_name">Σχολείο</div><textarea class="mail_cont" id="mail0"></textarea><a class="mail_link" id="mail0_link" href=""><img class="icon" src="img/send.png"></a></div>	
-	<div class="mail_box"><div class="mail_name">Αποστολάτου</div><textarea class="mail_cont" id="mail7"></textarea><a class="mail_link" id="mail7_link" href=""><img class="icon" src="img/send.png"></a></div>
-	<div class="mail_box"><div class="mail_name">Γριτσοπούλου</div><textarea class="mail_cont" id="mail6"></textarea><a class="mail_link" id="mail6_link" href=""><img class="icon" src="img/send.png"></a></div>
-	<div class="mail_box"><div class="mail_name">Καραγεώργη</div><textarea class="mail_cont" id="mail12"></textarea><a class="mail_link" id="mail12_link" href=""><img class="icon" src="img/send.png"></a></div>
-	<div class="mail_box"><div class="mail_name">Καυκαλάς</div><textarea class="mail_cont" id="mail10"></textarea><a class="mail_link" id="mail10_link" href=""><img class="icon" src="img/send.png"></a></div>
-	<div class="mail_box"><div class="mail_name">Κεφαλή</div><textarea class="mail_cont" id="mail3"></textarea><a class="mail_link" id="mail3_link" href=""><img class="icon" src="img/send.png"></a></div>
-	<div class="mail_box"><div class="mail_name">Λουβερδή</div><textarea class="mail_cont" id="mail4"></textarea><a class="mail_link" id="mail4_link" href=""><img class="icon" src="img/send.png"></a></div>
-	<div class="mail_box"><div class="mail_name">Μιχαλέρη</div><textarea class="mail_cont" id="mail9"></textarea><a class="mail_link" id="mail9_link" href=""><img class="icon" src="img/send.png"></a></div>
-	<div class="mail_box"><div class="mail_name">Παπαγεωργίου</div><textarea class="mail_cont" id="mail11"></textarea><a class="mail_link" id="mail11_link" href=""><img class="icon" src="img/send.png"></a></div>
-    <div class="mail_box"><div class="mail_name">Παπαγεωργίου (2)</div><textarea class="mail_cont" id="mail11b"></textarea><a class="mail_link" id="mail11b_link" href=""><img class="icon" src="img/send.png"></a></div>
-	<div class="mail_box"><div class="mail_name">Ρίζου</div><textarea class="mail_cont" id="mail13"></textarea><a class="mail_link" id="mail13_link" href=""><img class="icon" src="img/send.png"></a></div>
-	<div class="mail_box"><div class="mail_name">Σκόρδου</div><textarea class="mail_cont" id="mail1"></textarea><a class="mail_link" id="mail1_link" href=""><img class="icon" src="img/send.png"></a></div>
-    <div class="mail_box"><div class="mail_name">Σαχπελίδου</div><textarea class="mail_cont" id="mail2"></textarea><a class="mail_link" id="mail2_link" href=""><img class="icon" src="img/send.png"></a></div>
-    <div class="mail_box"><div class="mail_name">Φούντου</div><textarea class="mail_cont" id="mail5"></textarea><a class="mail_link" id="mail5_link" href=""><img class="icon" src="img/send.png"></a></div>
-    <div class="mail_box"><div class="mail_name">Χατζηαποστόλου</div><textarea class="mail_cont" id="mail8"></textarea><a class="mail_link" id="mail8_link" href=""><img class="icon" src="img/send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Σχολείο</div><textarea class="mail_cont" id="mail0"></textarea><a class="mail_link" id="mail0_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>	
+	<div class="mail_box"><div class="mail_name">Αποστολάτου</div><textarea class="mail_cont" id="mail7"></textarea><a class="mail_link" id="mail7_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+	<div class="mail_box"><div class="mail_name">Γριτσοπούλου</div><textarea class="mail_cont" id="mail6"></textarea><a class="mail_link" id="mail6_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+	<div class="mail_box"><div class="mail_name">Καραγεώργη</div><textarea class="mail_cont" id="mail12"></textarea><a class="mail_link" id="mail12_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+	<div class="mail_box"><div class="mail_name">Καυκαλάς</div><textarea class="mail_cont" id="mail10"></textarea><a class="mail_link" id="mail10_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+	<div class="mail_box"><div class="mail_name">Κεφαλή</div><textarea class="mail_cont" id="mail3"></textarea><a class="mail_link" id="mail3_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+	<div class="mail_box"><div class="mail_name">Λουβερδή</div><textarea class="mail_cont" id="mail4"></textarea><a class="mail_link" id="mail4_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+	<div class="mail_box"><div class="mail_name">Μιχαλέρη</div><textarea class="mail_cont" id="mail9"></textarea><a class="mail_link" id="mail9_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+	<div class="mail_box"><div class="mail_name">Παπαγεωργίου</div><textarea class="mail_cont" id="mail11"></textarea><a class="mail_link" id="mail11_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Παπαγεωργίου (2)</div><textarea class="mail_cont" id="mail11b"></textarea><a class="mail_link" id="mail11b_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+	<div class="mail_box"><div class="mail_name">Ρίζου</div><textarea class="mail_cont" id="mail13"></textarea><a class="mail_link" id="mail13_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+	<div class="mail_box"><div class="mail_name">Σκόρδου</div><textarea class="mail_cont" id="mail1"></textarea><a class="mail_link" id="mail1_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Σαχπελίδου</div><textarea class="mail_cont" id="mail2"></textarea><a class="mail_link" id="mail2_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Φούντου</div><textarea class="mail_cont" id="mail5"></textarea><a class="mail_link" id="mail5_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
+    <div class="mail_box"><div class="mail_name">Χατζηαποστόλου</div><textarea class="mail_cont" id="mail8"></textarea><a class="mail_link" id="mail8_link" href=""><img class="icon" src="assets/ico_send.png"></a></div>
    </div>
   </div>
   
@@ -268,7 +169,7 @@
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/alouver" target="_blank">Γαλλικά</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou" target="_blank">Γεωγραφία</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/csachpel" target="_blank">Γλώσσα</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/fgritso">Γυμναστική</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/fgritso" target="_blank">Γυμναστική</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/evapost" target="_blank">Εικαστικά</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/gchatzia" target="_blank">Θρησκευτικά</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/annmicha" target="_blank">Ιστορία</a></div>
@@ -278,239 +179,12 @@
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/lpapage" target="_blank">Οδύσσεια</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/soffountou" target="_blank">Οικιακή Οικονομία</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/atkarage" target="_blank">Πληροφορική</a></div>
-   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/rizm_m">Τεχνολογία</a></div>
+   <div class="lesson_box"><a href="https://minedu-secondary.webex.com/join/rizm_m" target="_blank">Τεχνολογία</a></div>
    <div class="lesson_box"><a href="https://minedu-secondary.webex.com/meet/okefali" target="_blank">Φυσική</a></div>
-   <div id="close_list"><img class="save_img" src="img/remove.png"></div>
+   <div id="close_list"><img class="save_img" src="assets/ico_remove.png"></div>
   </div>
- 
- <script> 
- 
- /*Create Lessons And Add New Lesson*/
- 
- var box=document.getElementsByClassName("box");
- var lesson_box=document.getElementsByClassName("lesson_box");
- var lessons_box=document.getElementById("lessons_box");
- var close_list=document.getElementById("close_list");
- var editBtn1=document.getElementById("save");
- var editBtn2=document.getElementById("save2");
- var editBtn3=document.getElementById("save3");
- var schedule=document.getElementById("schedule");
- var tasks=document.getElementById("tasks");
- var mails=document.getElementById("mails");
- var mail_link=document.getElementsByClassName("mail_link");
-
- for(var i=0; i<box.length; i++){
-  var lesson=document.createElement("div");
-  lesson.setAttribute("class","lesson");
-  lesson.innerHTML="<img class='icon' src='img/add.png'>";
-  box[i].appendChild(lesson);
-  var change_lesson=document.createElement("div");
-  change_lesson.setAttribute("class","change_lesson");
-  change_lesson.innerHTML="<img class='icon' src='img/edit.png'>";
-  box[i].appendChild(change_lesson);
-  var remove_lesson=document.createElement("div");
-  remove_lesson.setAttribute("class","remove_lesson");
-  remove_lesson.innerHTML="<img class='icon' src='img/remove.png'>";
-  box[i].appendChild(remove_lesson);
- }
-
- for(var i=0; i<box.length; i++){
-  box[i].querySelector('.lesson').addEventListener("click",function(){
-   if(this.innerHTML=='<img class="icon" src="img/add.png">'){
-    var current_lesson=document.getElementById("active_lesson");
-    current_lesson.removeAttribute("id","active_lesson");
-    this.setAttribute("id","active_lesson");
-    if(this.childNodes.length<=2){
-     lessons_box.style.display="flex"; 
-     schedule.style.display="none"; 
-     save.style.display="none"; 
-	 tasks.style.display="none"; 
-     save2.style.display="none";
-	 mails.style.display="none"; 
-     save3.style.display="none"; 
-     for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";mails.style.display="flex";save3.style.display="flex";});}
-    }
-   }
-  });
- }
- 
- for(var i=0; i<box.length; i++){
-   box[i].querySelector('.remove_lesson').addEventListener("click",function(){
-    var parent=this.closest(".box");
-    var les=parent.querySelector('.lesson').innerHTML='<img class="icon" src="img/add.png">';
-   });
- }
- 
- for(var i=0; i<box.length; i++){
-  box[i].querySelector('.change_lesson').addEventListener("click",function(){
-   var parent= this.closest(".box");
-   var les=parent.querySelector('.lesson');
-   if(les.innerHTML!='<img class="icon" src="img/add.png">'){
-    var current_lesson=document.getElementById("active_lesson");
-    current_lesson.removeAttribute("id","active_lesson");
-    les.setAttribute("id","active_lesson");
-    if(les.childNodes.length<=1){
-     lessons_box.style.display="flex"; 
-     schedule.style.display="none"; 
-     save.style.display="none"; 
-	 tasks.style.display="none"; 
-     save2.style.display="none";
-	 mails.style.display="none"; 
-     save3.style.display="none"; 
-     for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=les.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";mails.style.display="flex";save3.style.display="flex";});}
-    }
-   }
-  });
- }
- 
- for(var i=0; i<mail_link; i++){
-  console.log(mail_link[i].href);
-  if(mail_link[i].href==""){this.style.pointerEvents="none";}
- }
- 
- close_list.addEventListener("click",function(){if(lessons_box.style.display=="flex"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";mails.style.display="flex";save3.style.display="flex";}});
- 
- 
- /*Save Schedule On Localstorage*/ 
- 
- if(localStorage.getItem("schedule")!==null){
-  schedule.innerHTML=localStorage.getItem("schedule");
-  var box=document.getElementsByClassName("box");
-  var lesson_box=document.getElementsByClassName("lesson_box");
-  var lessons_box=document.getElementById("lessons_box");
-
-  for(var i=0; i<box.length; i++){
-   box[i].querySelector('.lesson').addEventListener("click",function(){
-	if(this.innerHTML=='<img class="icon" src="img/add.png">'){
-	 var current_lesson=document.getElementById("active_lesson");
-     current_lesson.removeAttribute("id","active_lesson");
-     this.setAttribute("id","active_lesson");
-     if(this.childNodes.length<=2){
-      lessons_box.style.display="flex"; 
-	  schedule.style.display="none"; 
-	  save.style.display="none";
-      tasks.style.display="none"; 
-      save2.style.display="none";
-	  mails.style.display="none"; 
-      save3.style.display="none"; 
-      for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=this.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";mails.style.display="flex";save3.style.display="flex";});}
-     }
-	}
-   });
-  }
- 
-  for(var i=0; i<box.length; i++){
-    box[i].querySelector('.remove_lesson').addEventListener("click",function(){
-     var parent= this.closest(".box");
-     var les=parent.querySelector('.lesson').innerHTML='<img class="icon" src="img/add.png">';
-    });
-  }
   
-  for(var i=0; i<box.length; i++){
-   box[i].querySelector('.change_lesson').addEventListener("click",function(){
-    var parent= this.closest(".box");
-    var les=parent.querySelector('.lesson');
-	if(les.innerHTML!='<img class="icon" src="img/add.png">'){
-     var current_lesson=document.getElementById("active_lesson");
-     current_lesson.removeAttribute("id","active_lesson");
-     les.setAttribute("id","active_lesson");
-     if(les.childNodes.length<=1){
-      lessons_box.style.display="flex"; 
-      schedule.style.display="none"; 
-      save.style.display="none"; 
-	  tasks.style.display="none"; 
-      save2.style.display="none"; 
-	  mails.style.display="none"; 
-      save3.style.display="none";  
-      for(var i=0; i<lesson_box.length; i++){lesson_box[i].addEventListener('click',function(){var current=document.getElementById("active");current.removeAttribute("id","active");this.setAttribute("id","active");var current_lesson=document.getElementById("active_lesson");current_lesson.innerHTML=les.innerHTML;lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";mails.style.display="flex";save3.style.display="flex";});}
-     }
-    }
-   });
- }
+  <script src="assets/script.js"></script>
   
-  close_list.addEventListener("click",function(){if(lessons_box.style.display=="flex"){lessons_box.style.display="none";schedule.style.display="flex";save.style.display="flex";tasks.style.display="flex";save2.style.display="flex";mails.style.display="flex";save3.style.display="flex";}});
- }
- 
- if(localStorage["cont1"]){var cont1=localStorage["cont1"];document.getElementById("cont1").value=cont1;}
- if(localStorage["cont2"]){var cont2=localStorage["cont2"];document.getElementById("cont2").value=cont2;}
- if(localStorage["cont3"]){var cont3=localStorage["cont3"];document.getElementById("cont3").value=cont3;}
- if(localStorage["cont4"]){var cont4=localStorage["cont4"];document.getElementById("cont4").value=cont4;}
- if(localStorage["cont5"]){var cont5=localStorage["cont5"];document.getElementById("cont5").value=cont5;}
- if(localStorage["cont6"]){var cont6=localStorage["cont6"];document.getElementById("cont6").value=cont6;}
- if(localStorage["cont7"]){var cont7=localStorage["cont7"];document.getElementById("cont7").value=cont7;}
- if(localStorage["cont8"]){var cont8=localStorage["cont8"];document.getElementById("cont8").value=cont8;}
- if(localStorage["cont9"]){var cont9=localStorage["cont9"];document.getElementById("cont9").value=cont9;}
- if(localStorage["cont10"]){var cont10=localStorage["cont10"];document.getElementById("cont10").value=cont10;}
- if(localStorage["cont11"]){var cont11=localStorage["cont11"];document.getElementById("cont11").value=cont11;}
- if(localStorage["cont12"]){var cont12=localStorage["cont12"];document.getElementById("cont12").value=cont12;}
- if(localStorage["cont13"]){var cont13=localStorage["cont13"];document.getElementById("cont13").value=cont13;}
- if(localStorage["cont14"]){var cont14=localStorage["cont14"];document.getElementById("cont14").value=cont14;}
- if(localStorage["cont15"]){var cont15=localStorage["cont15"];document.getElementById("cont15").value=cont15;}
- if(localStorage["cont16"]){var cont16=localStorage["cont16"];document.getElementById("cont16").value=cont16;}
- if(localStorage["cont17"]){var cont17=localStorage["cont17"];document.getElementById("cont17").value=cont17;}
- if(localStorage["cont18"]){var cont18=localStorage["cont18"];document.getElementById("cont18").value=cont18;}
- 
- if(localStorage["mail0"]){var mail0=localStorage["mail0"];document.getElementById("mail0").value=mail0;document.getElementById("mail0_link").href="mailto:"+mail0;document.getElementById("mail0_link").style.pointerEvents="auto";}
- if(localStorage["mail1"]){var mail1=localStorage["mail1"];document.getElementById("mail1").value=mail1;document.getElementById("mail1_link").href="mailto:"+mail1;document.getElementById("mail1_link").style.pointerEvents="auto";}
- if(localStorage["mail2"]){var mail2=localStorage["mail2"];document.getElementById("mail2").value=mail2;document.getElementById("mail2_link").href="mailto:"+mail2;document.getElementById("mail2_link").style.pointerEvents="auto";}
- if(localStorage["mail3"]){var mail3=localStorage["mail3"];document.getElementById("mail3").value=mail3;document.getElementById("mail3_link").href="mailto:"+mail3;document.getElementById("mail3_link").style.pointerEvents="auto";}
- if(localStorage["mail4"]){var mail4=localStorage["mail4"];document.getElementById("mail4").value=mail4;document.getElementById("mail4_link").href="mailto:"+mail4;document.getElementById("mail4_link").style.pointerEvents="auto";}
- if(localStorage["mail5"]){var mail5=localStorage["mail5"];document.getElementById("mail5").value=mail5;document.getElementById("mail5_link").href="mailto:"+mail5;document.getElementById("mail5_link").style.pointerEvents="auto";}
- if(localStorage["mail6"]){var mail6=localStorage["mail6"];document.getElementById("mail6").value=mail6;document.getElementById("mail6_link").href="mailto:"+mail6;document.getElementById("mail6_link").style.pointerEvents="auto";}
- if(localStorage["mail7"]){var mail7=localStorage["mail7"];document.getElementById("mail7").value=mail7;document.getElementById("mail7_link").href="mailto:"+mail7;document.getElementById("mail7_link").style.pointerEvents="auto";}
- if(localStorage["mail8"]){var mail8=localStorage["mail8"];document.getElementById("mail8").value=mail8;document.getElementById("mail8_link").href="mailto:"+mail8;document.getElementById("mail8_link").style.pointerEvents="auto";}
- if(localStorage["mail9"]){var mail9=localStorage["mail9"];document.getElementById("mail9").value=mail9;document.getElementById("mail9_link").href="mailto:"+mail9;document.getElementById("mail9_link").style.pointerEvents="auto";}
- if(localStorage["mail10"]){var mail10=localStorage["mail10"];document.getElementById("mail10").value=mail10;document.getElementById("mail10_link").href="mailto:"+mail10;document.getElementById("mail10_link").style.pointerEvents="auto";}
- if(localStorage["mail11"]){var mail11=localStorage["mail11"];document.getElementById("mail11").value=mail11;document.getElementById("mail11_link").href="mailto:"+mail11;document.getElementById("mail11_link").style.pointerEvents="auto";}
- if(localStorage["mail11b"]){var mail11=localStorage["mail11b"];document.getElementById("mail11b").value=mail11;document.getElementById("mail11b_link").href="mailto:"+mail11b;document.getElementById("mail11b_link").style.pointerEvents="auto";}
- if(localStorage["mail12"]){var mail12=localStorage["mail12"];document.getElementById("mail12").value=mail12;document.getElementById("mail12_link").href="mailto:"+mail12;document.getElementById("mail12_link").style.pointerEvents="auto";}
- if(localStorage["mail13"]){var mail13=localStorage["mail13"];document.getElementById("mail13").value=mail13;document.getElementById("mail13_link").href="mailto:"+mail13;document.getElementById("mail13_link").style.pointerEvents="auto";}
- 
- editBtn1.addEventListener('click', function(e){localStorage.setItem("schedule", schedule.innerHTML);alert("Το πρόγραμμα αποθηκεύτηκε");});
- editBtn2.addEventListener("click", function(e)
- {
-  var cont1=document.getElementById("cont1").value;if(cont1!=''){localStorage.setItem("cont1", cont1);};
-  var cont2=document.getElementById("cont2").value;if(cont2!=''){localStorage.setItem("cont2", cont2);};
-  var cont3=document.getElementById("cont3").value;if(cont3!=''){localStorage.setItem("cont3", cont3);};
-  var cont4=document.getElementById("cont4").value;if(cont4!=''){localStorage.setItem("cont4", cont4);};
-  var cont5=document.getElementById("cont5").value;if(cont5!=''){localStorage.setItem("cont5", cont5);};
-  var cont6=document.getElementById("cont6").value;if(cont6!=''){localStorage.setItem("cont6", cont6);};
-  var cont7=document.getElementById("cont7").value;if(cont7!=''){localStorage.setItem("cont7", cont7);};
-  var cont8=document.getElementById("cont8").value;if(cont8!=''){localStorage.setItem("cont8", cont8);};
-  var cont9=document.getElementById("cont9").value;if(cont9!=''){localStorage.setItem("cont9", cont9);};
-  var cont10=document.getElementById("cont10").value;if(cont10!=''){localStorage.setItem("cont10", cont10)};
-  var cont11=document.getElementById("cont11").value;if(cont11!=''){localStorage.setItem("cont11", cont11)};
-  var cont12=document.getElementById("cont12").value;if(cont12!=''){localStorage.setItem("cont12", cont12)};
-  var cont13=document.getElementById("cont13").value;if(cont13!=''){localStorage.setItem("cont13", cont13)};
-  var cont14=document.getElementById("cont14").value;if(cont14!=''){localStorage.setItem("cont14", cont14)};
-  var cont15=document.getElementById("cont15").value;if(cont15!=''){localStorage.setItem("cont15", cont15)};
-  var cont16=document.getElementById("cont16").value;if(cont16!=''){localStorage.setItem("cont16", cont16)};
-  var cont17=document.getElementById("cont17").value;if(cont17!=''){localStorage.setItem("cont17", cont17)};
-  var cont18=document.getElementById("cont18").value;if(cont18!=''){localStorage.setItem("cont18", cont18)};
-  alert("Τα μαθήματα αποθηκεύτηκαν");
- });
- 
- editBtn3.addEventListener("click", function(e)
- {
-  var mail0=document.getElementById("mail0").value;if(mail0!=''){localStorage.setItem("mail0", mail0);};
-  var mail1=document.getElementById("mail1").value;if(mail1!=''){localStorage.setItem("mail1", mail1);};
-  var mail2=document.getElementById("mail2").value;if(mail2!=''){localStorage.setItem("mail2", mail2);};
-  var mail3=document.getElementById("mail3").value;if(mail3!=''){localStorage.setItem("mail3", mail3);};
-  var mail4=document.getElementById("mail4").value;if(mail4!=''){localStorage.setItem("mail4", mail4);};
-  var mail5=document.getElementById("mail5").value;if(mail5!=''){localStorage.setItem("mail5", mail5);};
-  var mail6=document.getElementById("mail6").value;if(mail6!=''){localStorage.setItem("mail6", mail6);};
-  var mail7=document.getElementById("mail7").value;if(mail7!=''){localStorage.setItem("mail7", mail7);};
-  var mail8=document.getElementById("mail8").value;if(mail8!=''){localStorage.setItem("mail8", mail8);};
-  var mail9=document.getElementById("mail9").value;if(mail9!=''){localStorage.setItem("mail9", mail9);};
-  var mail10=document.getElementById("mail10").value;if(mail10!=''){localStorage.setItem("mail10", mail10)};
-  var mail11=document.getElementById("mail11").value;if(mail11!=''){localStorage.setItem("mail11", mail11)};
-  var mail11b=document.getElementById("mail11b").value;if(mail11b!=''){localStorage.setItem("mail11b", mail11b)};
-  var mail12=document.getElementById("mail12").value;if(mail12!=''){localStorage.setItem("mail12", mail12)};
-  var mail13=document.getElementById("mail13").value;if(mail13!=''){localStorage.setItem("mail13", mail13)};
-  alert("Τα e-mails αποθηκεύτηκαν");
- });
-
-
- </script>
  </body>
 </html>
